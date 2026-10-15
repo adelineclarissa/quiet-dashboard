@@ -2,7 +2,7 @@ import {randomBytes,createHash,timingSafeEqual} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import fs from 'node:fs/promises';
 const origin='http://localhost:4173',redirect=origin+'/oauth/google/callback';
-const scopes='https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/tasks';
+const scopes='openid profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/tasks';
 const vault=new URL('./runtime/google-vault.dpapi',import.meta.url);
 const hash=value=>createHash('sha256').update(value).digest('hex');
 const equal=(a,b)=>typeof a==='string'&&typeof b==='string'&&a.length===b.length&&timingSafeEqual(Buffer.from(a),Buffer.from(b));

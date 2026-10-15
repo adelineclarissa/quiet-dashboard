@@ -1,6 +1,6 @@
 # Quiet Dashboard
 
-A simple dark personal dashboard with a greeting for Daniel, a Bible verse that changes with the time of day, editable Google Tasks, and a monthly view combining selected Google calendars.
+A simple dark personal dashboard with a greeting using your Google first name, a Bible verse that changes with the time of day, editable Google Tasks, and a monthly view combining selected Google calendars.
 
 ## Run locally
 
@@ -23,6 +23,8 @@ No credentials or saved Google sessions are included.
 3. Under Data Access, configure these scopes:
    - https://www.googleapis.com/auth/calendar.readonly
    - https://www.googleapis.com/auth/tasks
+   - openid
+   - profile
 4. Create an OAuth client of type Web application.
 5. Add http://localhost:4173 under Authorized JavaScript origins.
 6. Add http://localhost:4173/oauth/google/callback under Authorized redirect URIs.
@@ -32,6 +34,8 @@ No credentials or saved Google sessions are included.
 Keep the client secret private. Credentials and the refresh token are encrypted under runtime/google-vault.dpapi for the current Windows user. This folder is created only after setup. It is excluded by .gitignore and must never be shared, even though encrypted. Access tokens stay in memory. Do not copy the vault between accounts/computers. Clearing browser cookies requires signing in again. Disconnect clears the saved session and attempts to revoke Google access.
 
 Google refresh tokens for external apps in Testing generally expire after seven days. Google revocation or account policy may also require reconnecting. See https://developers.google.com/identity/protocols/oauth2#expiration.
+
+The greeting uses the first word of Google’s given_name profile field. Until connected, or if Google does not provide a name, it shows a neutral greeting. Reconnect Google after updating to grant basic profile access. Names stay in memory and clear on disconnect.
 
 ## Features and editing
 
