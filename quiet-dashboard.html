@@ -1,0 +1,245 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiet — My dashboard</title><style>
+:root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#efefed;background:#101111}*{box-sizing:border-box}body{margin:0}button,a{font:inherit}button{cursor:pointer;color:inherit;background:#202222;border:1px solid #343737;border-radius:8px;padding:9px 14px}button:hover{background:#303333}a{color:#b6c8ac;text-decoration:none}header{height:88px;border-bottom:1px solid #282a29;display:flex;align-items:center;justify-content:space-between;padding:0 5vw}.brand{font-size:22px;letter-spacing:-1px}.brand span{color:#c2d6b1;margin-right:12px}.status{font-size:12px;color:#969b97;display:flex;align-items:center;gap:10px}.dot{width:6px;height:6px;border-radius:50%;background:#a7b79a}main{max-width:1440px;margin:auto;padding:48px 5vw}.eyebrow{font-size:11px;letter-spacing:2px;color:#8d958c;text-transform:uppercase}h1{font-weight:450;font-size:36px;letter-spacing:-1.4px;margin:12px 0}p{color:#929992;font-size:14px;line-height:1.7}.intro{margin-bottom:35px;display:flex;align-items:end;justify-content:space-between}.layout{display:grid;grid-template-columns:310px 1fr;gap:22px}.panel{background:#171918;border:1px solid #2a2d2a;border-radius:14px;overflow:hidden}.panelhead{padding:24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2a2d2a}h2{font-size:16px;font-weight:500;margin:0}.tag{color:#939b90;font-size:11px;border:1px solid #363d34;padding:4px 8px;border-radius:5px}.empty{padding:44px 25px;text-align:center}.icon{font-size:28px;color:#a9bd9e;margin-bottom:22px}.empty h3{font-weight:450;font-size:16px}.empty p{font-size:13px}.external{display:inline-block;margin-top:16px;padding:10px 14px;border:1px solid #3d4938;border-radius:7px;font-size:12px}.note{margin:24px;padding:16px;background:#1e221d;border-radius:8px;font-size:12px;color:#a1ac9a;line-height:1.7}.calendarbar{display:flex;align-items:center;gap:9px}.calendarbar button{padding:6px 11px}.week,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.week div{padding:16px 4px;text-align:center;color:#7b847b;font-size:11px;text-transform:uppercase;letter-spacing:1px}.day{min-height:94px;background:none;border:0;border-radius:0;border-top:1px solid #292d29;border-right:1px solid #292d29;padding:12px;text-align:left;display:flex;align-items:flex-start;font-size:12px}.day:nth-child(7n){border-right:0}.day:hover{background:#222722}.day span{width:26px;height:26px;display:grid;place-items:center}.day.today span{background:#bfd3ac;color:#182012;border-radius:50%}.day.selected{background:#252d22}.day.muted{color:#515a50}.bottom{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #2a2d2a;font-size:12px;color:#939d8d}.connection{margin-top:24px;display:flex;align-items:center;gap:18px;padding:20px 24px}.connection .grow{flex:1}.connection p{font-size:12px;margin:5px 0 0}.connection button{background:#bdcfae;color:#1b2416;border:0;font-size:12px}.footer{margin-top:25px;color:#596158;font-size:11px;display:flex;justify-content:space-between}dialog{max-width:440px;background:#1b1f1a;color:#eee;border:1px solid #48523f;border-radius:14px;padding:28px}dialog::backdrop{background:#000a}dialog h2{font-size:21px;margin-bottom:16px}dialog button{float:right} @media(max-width:900px){.layout{grid-template-columns:1fr}.day{min-height:70px}.intro{display:block}.intro>p{display:none}main{padding:30px 20px}header{padding:0 20px}.connection{align-items:start;flex-wrap:wrap}.status{font-size:10px}h1{font-size:30px}.panelhead{padding:18px}.bottom{flex-wrap:wrap}}
+.taskrow{padding:16px 0;border-bottom:1px solid #2a3027;font-size:13px;overflow-wrap:anywhere}.taskrow small{display:block;margin-top:6px;color:#a5b796}.taskrow p{font-size:12px;margin:6px 0;white-space:pre-wrap}#tasksControls button{font-size:11px;padding:7px 9px}#taskItems{max-height:520px;overflow:auto}button[hidden],div[hidden]{display:none}.taskheading{display:flex;gap:10px;align-items:flex-start;cursor:pointer}.taskheading input{accent-color:#bdcfae;margin-top:3px}.taskrow.completed .taskheading span{text-decoration:line-through;color:#7b8874}.taskactions{display:flex;gap:8px;margin-top:10px}.taskactions button{font-size:11px;padding:5px 9px}#taskEditor{width:min(440px,calc(100vw - 32px))}#taskEditor label{font-size:12px;display:block;margin:12px 0 6px}#taskEditor input,#taskEditor textarea{width:100%;background:#111710;border:1px solid #465240;color:#edf2e9;border-radius:6px;padding:10px;font:inherit}button:disabled{opacity:.45;cursor:wait}.intro{align-items:flex-start;gap:28px}.intro>div:first-child{flex:1;min-width:0}.account{flex:0 0 270px;text-align:right;padding-top:22px}.accountbuttons{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.accountbuttons button{font-size:12px}#connect{background:#bdcfae;color:#1b2416;border-color:#bdcfae}#sessionStatus{font-size:12px;color:#b7c7ac;margin-top:14px}.account p{font-size:11px;line-height:1.6;margin:5px 0}.account #zone{color:#687362}.taskrow{scroll-margin-top:12px}@media(max-width:900px){.intro{display:flex;flex-wrap:wrap}.account{flex-basis:100%;text-align:left;padding-top:0}.accountbuttons{justify-content:flex-start}}@media(min-width:1100px){.account{flex-basis:320px}}@media(min-width:601px) and (max-width:900px){.intro{flex-wrap:nowrap}.account{flex:0 0 185px;text-align:right;padding-top:22px}.accountbuttons{justify-content:flex-end}} #calendarPicker{padding:16px 24px;border-bottom:1px solid #2a3027}.calendarPickerHeading{display:flex;align-items:center;justify-content:space-between;color:#95a18b;font-size:11px;margin-bottom:12px}.calendarPickerHeading button{font-size:10px;padding:4px 8px}#calendarChoices{display:flex;flex-wrap:wrap;gap:10px 18px}.calendarChoice{display:flex;align-items:center;gap:7px;max-width:100%;color:#c3cdbd;font-size:12px;cursor:pointer}.calendarChoice span{overflow-wrap:anywhere}.calendarChoice input{accent-color:#bdcfae}.calendarChoice i{width:7px;height:7px;border-radius:50%;flex-shrink:0}.taskOpen{display:inline-flex;align-items:center;border:1px solid #3d4938;border-radius:7px;padding:8px 10px;font-size:11px;white-space:nowrap}.taskOpen:hover{background:#263023}.panelhead{gap:12px}.bottom{justify-content:flex-end}#authToast{position:fixed;bottom:20px;right:20px;z-index:20;max-width:min(420px,calc(100vw - 40px));display:flex;align-items:center;gap:12px;padding:14px 16px;background:#253020;border:1px solid #596d4a;border-radius:9px;color:#e1ebda;font-size:12px;line-height:1.6}#authToast[hidden]{display:none}#authToast button{padding:2px 7px}#calendarDisclosure summary{cursor:pointer;color:#bdcbae;font-size:12px;user-select:none;padding:2px 0}#calendarDisclosure[open] summary{margin-bottom:14px}#calendarDisclosure summary:hover{color:#e2edd8}#calendarDisclosure summary:focus-visible{outline:2px solid #bdcfae;outline-offset:5px;border-radius:3px}</style><script src="https://accounts.google.com/gsi/client" async defer></script></head><body><main><section class="intro"><div><div class="eyebrow" id="fullDate"></div><h1 id="greeting">Good day, Daniel.</h1><p id="encouragement" style="max-width:700px;line-height:1.8" aria-live="polite"></p></div><div class="account"><div class="accountbuttons"><button id="setup" aria-label="Google connection settings">Settings</button><button id="refresh" hidden>Refresh all</button><button id="disconnect" hidden>Disconnect</button><button id="connect">Connect Google</button></div></div></section><div class="layout"><aside class="panel"><div class="panelhead"><h2>My tasks</h2><a class="taskOpen" href="https://tasks.google.com/tasks/" target="_blank" rel="noopener">Open Google Tasks ↗</a></div><div style="padding:20px"><p id="tasksStatus" role="status">Connect Google above to manage your tasks. Changes sync across your devices.</p><div id="tasksControls" hidden><button id="addTask" style="margin-bottom:16px">+ Add task</button><label for="taskLists" style="font-size:12px">Task list</label><select id="taskLists" style="display:block;width:100%;padding:10px;margin:8px 0 16px;background:#202620;color:#e5ecdf;border:1px solid #414c3b;border-radius:7px"></select><label style="font-size:12px"><input id="showCompleted" type="checkbox"> Include completed</label><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:14px"><button id="refreshTasks">Refresh tasks</button><button id="refreshTaskLists">Refresh lists</button></div></div><div id="taskItems"></div></div></aside><section class="panel"><div class="panelhead"><h2 id="month"></h2><div class="calendarbar"><button id="today">Today</button><button id="prev" aria-label="Bulan sebelumnya">‹</button><button id="next" aria-label="Bulan berikutnya">›</button></div></div><div class="week"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div><div class="grid" id="grid"></div><p id="connectionStatus" role="status" style="padding:0 24px;font-size:12px">Calendar not connected.</p><div id="agenda" style="padding:0 24px"></div><div id="calendarPicker" hidden><details id="calendarDisclosure"><summary>Calendars</summary><div class="calendarPickerHeading"><span>Choose calendars to display</span><button id="refreshCalendarChoices" type="button">Refresh list</button></div><div id="calendarChoices"></div></details></div><div class="bottom"><a href="https://calendar.google.com/" target="_blank" rel="noopener">Open Google Calendar ↗</a></div></section></div></main><div id="authToast" hidden role="status"><span id="authNotice"></span><button id="dismissAuthNotice" aria-label="Dismiss connection message">×</button></div><dialog id="taskEditor"><h2 id="taskEditorTitle">Add task</h2><form id="taskForm"><label for="taskTitle">Task</label><input id="taskTitle" required maxlength="1024" autocomplete="off"><label for="taskDue">Due date</label><input id="taskDue" type="date"><label for="taskNotes">Notes</label><textarea id="taskNotes" rows="4" maxlength="8192"></textarea><p id="taskFormStatus" role="status"></p><div style="display:flex;gap:8px;justify-content:flex-end"><button id="cancelTask" type="button">Cancel</button><button id="saveTask" type="submit">Save to Google</button></div></form></dialog><dialog id="info"><h2>Google connection settings</h2><div id="sessionStatus">Not connected</div><p id="authStatus" role="status">Calendar & Tasks · One Google account</p><p id="zone"></p><p>One-time setup: create a Google OAuth client for this dashboard.</p><ol style="font-size:13px;line-height:1.8;color:#abb6a5"><li>In Google Cloud, create or select a project.</li><li>Enable the Google Calendar API and Google Tasks API.</li><li>In Google Auth Platform, configure Branding and Audience. For a personal testing app, add your Google email as a test user. Under Data Access, add the calendar.readonly and tasks scopes (Tasks editing access).</li><li>Under Clients, create a Web application client. Add <strong id="origin"></strong> as an authorized JavaScript origin.</li><li>Paste the client ID below. No client secret is needed.</li></ol><p><a href="https://console.cloud.google.com/auth/overview" target="_blank" rel="noopener">Open Google Cloud setup ↗</a></p><section style="border-top:1px solid #3a4334;padding-top:16px;margin-top:20px"><h3 style="font-size:16px;font-weight:500">Stay connected</h3><p>To renew Google access automatically, add this Authorized redirect URI to your Google OAuth Web client:</p><p><code>http://localhost:4173/oauth/google/callback</code></p><p>Download that client's credentials JSON from Google Cloud and choose it below. Credentials and refresh tokens are encrypted for your Windows account. Do not paste the client secret into chat.</p><label for="offlineCredentials">OAuth client JSON</label><input id="offlineCredentials" type="file" accept=".json,application/json" style="width:100%;margin-top:10px"><p id="offlineSetupStatus" role="status"></p><p style="font-size:11px">Google apps in Testing mode usually require authorization again after seven days. Revoked access also requires reconnecting.</p></section><form id="config"><label for="clientId">OAuth client ID</label><input id="clientId" placeholder="…apps.googleusercontent.com" required style="width:100%;padding:12px;margin:10px 0 20px;background:#101410;color:white;border:1px solid #48523f;border-radius:6px"><p id="configError" role="status"></p><button type="button" id="close">Close</button><button type="submit">Save setup</button></form></dialog><script>
+const now=new Date(),view=new Date(now.getFullYear(),now.getMonth(),1);let chosen=new Date(now);const $=id=>document.getElementById(id),fmt=(d,o)=>new Intl.DateTimeFormat('en-GB',o).format(d);$('fullDate').textContent=fmt(now,{weekday:'long',day:'numeric',month:'long',year:'numeric'});$('zone').textContent=Intl.DateTimeFormat().resolvedOptions().timeZone;function same(a,b){return a.toDateString()===b.toDateString()}function render(){$('month').textContent=fmt(view,{month:'long',year:'numeric'});$('grid').replaceChildren();let start=new Date(view);start.setDate(1-((view.getDay()+6)%7));let weeks=Math.ceil((((view.getDay()+6)%7)+new Date(view.getFullYear(),view.getMonth()+1,0).getDate())/7);for(let i=0;i<weeks*7;i++){let d=new Date(start);d.setDate(start.getDate()+i);let b=document.createElement('button');b.className='day'+(d.getMonth()!==view.getMonth()?' muted':'')+(same(d,now)?' today':'')+(same(d,chosen)?' selected':'');b.setAttribute('aria-label',fmt(d,{dateStyle:'full'}));b.setAttribute('aria-pressed',same(d,chosen));let s=document.createElement('span');s.textContent=d.getDate();b.append(s);b.onclick=()=>{chosen=d;render()};$('grid').append(b)}paintEvents()}$('prev').onclick=()=>{view.setMonth(view.getMonth()-1);render();loadEvents()};$('next').onclick=()=>{view.setMonth(view.getMonth()+1);render();loadEvents()};$('today').onclick=()=>{view.setFullYear(now.getFullYear(),now.getMonth(),1);chosen=new Date(now);render();loadEvents()};
+let token='',expiryTimer,events=[],generation=0,eventsLoaded=false,clientId='';
+let calendarLists=[],selectedCalendars=new Set(),calendarListGeneration=0;
+function calendarSummary(){return calendarLists.length?selectedCalendars.size+' calendars':'Primary calendar'}
+function clearCalendars(){calendarListGeneration++;calendarLists=[];selectedCalendars.clear();$('calendarChoices').replaceChildren();$('calendarPicker').hidden=true}
+async function calendarRead(path,params,access){
+ const q=new URLSearchParams(params);const response=await fetch('https://www.googleapis.com/calendar/v3/'+path+'?'+q,{headers:{Authorization:'Bearer '+access},cache:'no-store'});const data=await response.json();
+ if(access!==token)throw new Error('Request superseded');
+ if(response.status===401){resetSession('Google access expired. Connect Google again.');throw new Error('Google access expired')}
+ if(!response.ok)throw new Error(data.error?.message||'Could not read this calendar.');return data;
+}
+function paintCalendarChoices(){
+ $('calendarChoices').replaceChildren();for(const cal of calendarLists){const label=document.createElement('label');label.className='calendarChoice';const input=document.createElement('input');input.type='checkbox';input.checked=selectedCalendars.has(cal.id);input.onchange=()=>{if(input.checked)selectedCalendars.add(cal.id);else selectedCalendars.delete(cal.id);loadEvents()};
+ const dot=document.createElement('i');dot.style.background=cal.dashboardColor;const name=document.createElement('span');name.textContent=cal.summaryOverride||cal.summary||'Untitled calendar';label.append(input,dot,name);$('calendarChoices').append(label)}$('calendarPicker').hidden=false;
+}
+async function loadCalendars(){
+ if(!token)return;const mine=++calendarListGeneration,access=token;status('Loading your calendars…');const previous=new Set(selectedCalendars),hadLists=calendarLists.length>0;
+ try{let page='',all=[];for(let i=0;i<20;i++){const data=await calendarRead('users/me/calendarList',{maxResults:'250',minAccessRole:'reader',showHidden:'true',...(page?{pageToken:page}:{})},access);if(mine!==calendarListGeneration)return;all.push(...(data.items||[]));page=data.nextPageToken||'';if(!page)break}if(page)throw new Error('Too many calendars to list.');
+ if(mine!==calendarListGeneration||access!==token)return;calendarLists=all.filter(c=>!c.deleted).map(c=>({...c,dashboardColor:/^#[0-9a-f]{6}$/i.test(c.backgroundColor||'')?c.backgroundColor:'#bdcfae'}));
+ selectedCalendars=new Set(calendarLists.filter(c=>hadLists?previous.has(c.id):c.primary||(c.summaryOverride||c.summary||'').trim().toLowerCase()==='danieline').map(c=>c.id));
+ if(!hadLists&&!selectedCalendars.size&&calendarLists.length)selectedCalendars.add(calendarLists[0].id);paintCalendarChoices();await loadEvents();
+ }catch(e){if(mine!==calendarListGeneration||access!==token)return;status('Could not load calendar choices: '+e.message+' Use Refresh all to retry.');if(!hadLists){events=[];eventsLoaded=false;render()}}
+}
+async function readCalendarEvents(cal,access,start,end){
+ let page='',all=[];for(let i=0;i<20;i++){const data=await calendarRead('calendars/'+encodeURIComponent(cal.id)+'/events',{timeMin:start.toISOString(),timeMax:end.toISOString(),singleEvents:'true',orderBy:'startTime',maxResults:'2500',timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,...(page?{pageToken:page}:{})},access);all.push(...(data.items||[]));page=data.nextPageToken||'';if(!page)return all.filter(e=>e.status!=='cancelled').map(e=>({...e,dashboardCalendar:cal.summaryOverride||cal.summary||'Untitled calendar',dashboardColor:cal.dashboardColor}))}throw new Error('Too many events to preview completely.');
+}
+async function loadEvents(){
+ if(!token)return;const mine=++generation,access=token,{start,end}=range();events=[];eventsLoaded=false;render();
+ const calendars=calendarLists.filter(c=>selectedCalendars.has(c.id));
+ if(!calendars.length){status(calendarLists.length?'Select at least one calendar above.':'No calendars available. Use Refresh all to reload the list.');return}
+ status('Loading '+calendars.length+' calendars…');let index=0;const all=[],failed=[];
+ await Promise.all(Array.from({length:Math.min(3,calendars.length)},async()=>{while(index<calendars.length&&mine===generation&&access===token){const cal=calendars[index++];try{all.push(...await readCalendarEvents(cal,access,start,end))}catch(e){failed.push((cal.summaryOverride||cal.summary||'Calendar')+': '+e.message)}}}));
+ if(mine!==generation||access!==token)return;events=all.sort((a,b)=>String(a.start?.dateTime||a.start?.date||'').localeCompare(String(b.start?.dateTime||b.start?.date||'')));eventsLoaded=failed.length<calendars.length;render();
+ status(failed.length?'Some calendars could not load. '+failed.join(' · ')+'. Use Refresh all to retry.':'Updated '+fmt(new Date(),{hour:'2-digit',minute:'2-digit'})+' · '+calendars.length+' calendars');
+}
+
+try{clientId=localStorage.getItem('quiet-google-client-id')||''}catch{}
+const CAL_SCOPE='https://www.googleapis.com/auth/calendar.readonly';
+function showAuthStatus(message){$('authStatus').textContent=message;const error=/expired|could not|couldn.t|missing|not granted|no permissions|did not complete|sign-in closed|still loading|interrupted|remove consent|cannot run/i.test(message);$('authNotice').textContent=error?message:'';$('authToast').hidden=!error}
+const status=message=>$('connectionStatus').textContent=message;
+function setup(){ $('clientId').value=clientId;$('origin').textContent=location.origin;$('info').showModal() }
+$('setup').onclick=setup;$('close').onclick=()=>$('info').close();
+$('config').onsubmit=e=>{e.preventDefault();const value=$('clientId').value.trim();if(!/^[\w-]+\.apps\.googleusercontent\.com$/.test(value)){$('configError').textContent='Paste the Web application client ID from Google Cloud.';return}if(token||tasksToken)resetSession();clientId=value;try{localStorage.setItem('quiet-google-client-id',value)}catch{}$('info').close();status('Setup saved. Click Connect Google to sign in.')};
+function resetSession(message='Connect Google to see your calendar and tasks.'){
+ token='';events=[];eventsLoaded=false;generation++;clearTimeout(expiryTimer);resetTasks();clearCalendars();
+ $('refresh').hidden=true;$('disconnect').hidden=true;$('connect').hidden=false;$('connect').textContent='Connect Google';$('sessionStatus').textContent='Not connected';showAuthStatus(message);status('Calendar not connected.');render();
+}
+$('disconnect').onclick=()=>{if(tasksWriteBusy)return;const previous=token||tasksToken;resetSession('Disconnected. Your Google data has been cleared from this dashboard.');if(previous&&window.google?.accounts?.oauth2)google.accounts.oauth2.revoke(previous,r=>{if(!r.success)showAuthStatus('Disconnected locally. Remove consent in Google Account permissions if needed.');})};
+let googleSignInBusy=false;
+$('connect').onclick=()=>{
+ if(googleSignInBusy||tasksWriteBusy)return;
+ if(location.protocol==='file:'){showAuthStatus('Open http://localhost:4173 in Chrome or Edge to connect.');return}
+ if(!clientId){setup();return}
+ if(!window.google?.accounts?.oauth2){showAuthStatus('Google sign-in is still loading. Check your connection and try again.');return}
+ googleSignInBusy=true;$('connect').disabled=true;showAuthStatus('Choose your Google account and allow Calendar and Tasks access.');
+ const unlock=()=>{googleSignInBusy=false;$('connect').disabled=false};
+ try{
+ const client=google.accounts.oauth2.initTokenClient({client_id:clientId,scope:CAL_SCOPE+' '+TASK_SCOPE,include_granted_scopes:false,callback:r=>{
+ unlock();if(r.error||!r.access_token){showAuthStatus('Google authorization did not complete: '+(r.error||'No access token returned'));return}
+ const calendarAllowed=google.accounts.oauth2.hasGrantedAllScopes(r,CAL_SCOPE),tasksAllowed=google.accounts.oauth2.hasGrantedAllScopes(r,TASK_SCOPE);
+ resetSession();if(!calendarAllowed&&!tasksAllowed){showAuthStatus('No permissions were granted. Connect Google and allow Calendar and Tasks access.');return}
+ token=calendarAllowed?r.access_token:'';tasksToken=tasksAllowed?r.access_token:'';
+ $('refresh').hidden=false;$('disconnect').hidden=false;$('connect').hidden=calendarAllowed&&tasksAllowed;$('connect').textContent='Update Google access';
+ $('sessionStatus').textContent=calendarAllowed&&tasksAllowed?'Calendar & Tasks connected':calendarAllowed?'Calendar connected':'Tasks connected';
+ showAuthStatus(calendarAllowed&&tasksAllowed?'One account · Calendar viewing & Tasks editing':!calendarAllowed?'Calendar permission missing. Update Google access to connect both.':'Tasks permission missing. Update Google access to connect both.');
+ if(!tasksAllowed)taskStatus('Tasks permission was not granted. Use Update Google access above.');
+ const lifetime=Number(r.expires_in);expiryTimer=setTimeout(()=>resetSession('Google access expired. Connect Google again to refresh Calendar and Tasks.'),Math.max(1,(Number.isFinite(lifetime)&&lifetime>0?lifetime:300)-30)*1000);
+ if(calendarAllowed)loadCalendars();if(tasksAllowed)loadTaskLists();render();
+ },error_callback:e=>{unlock();showAuthStatus(e.type==='popup_closed'?'Sign-in closed. Try Connect Google in Chrome or Edge.':'Could not open Google sign-in. Allow popups and try again.');}});
+ client.requestAccessToken({prompt:'select_account'});
+ }catch{unlock();showAuthStatus('Could not start Google sign-in. Try again.');}
+};
+
+function range(){const start=new Date(view);start.setDate(1-((view.getDay()+6)%7));const end=new Date(view.getFullYear(),view.getMonth()+1,1);const extra=(7-((end.getDay()+6)%7))%7;end.setDate(end.getDate()+extra);return{start,end}}
+function covers(event,date){const next=new Date(date);next.setDate(next.getDate()+1);if(event.start?.date){const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');return event.start.date<=key(date)&&(event.end?.date||event.start.date)>key(date)}return new Date(event.start?.dateTime)<next&&new Date(event.end?.dateTime)>date}
+function eventLabel(e){return(e.start?.date?'All day':fmt(new Date(e.start.dateTime),{hour:'2-digit',minute:'2-digit'}))+' · '+(e.summary||'Untitled event')+(e.dashboardCalendar?' · '+e.dashboardCalendar:'')}
+function paintEvents(){
+ const {start}=range();Array.from($('grid').children).forEach((b,i)=>{const d=new Date(start);d.setDate(d.getDate()+i);const found=events.filter(e=>covers(e,d));b.style.flexDirection='column';b.style.overflow='hidden';for(const e of found.slice(0,2)){const title=document.createElement('small');title.textContent=e.summary||'Untitled event';title.title=(e.dashboardCalendar?e.dashboardCalendar+' · ':'')+title.textContent;title.style.cssText='display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b9cbaa;font-size:10px;margin-top:4px';title.style.borderLeft='3px solid '+(e.dashboardColor||'#bdcfae');title.style.paddingLeft='4px';b.append(title)}if(found.length>2){const more=document.createElement('small');more.textContent='+'+(found.length-2)+' more';b.append(more)}});
+ const agenda=$('agenda');agenda.replaceChildren();if(!token||!eventsLoaded)return;const found=events.filter(e=>covers(e,new Date(chosen.getFullYear(),chosen.getMonth(),chosen.getDate())));const label=document.createElement('p');label.textContent=found.length?'Events for '+fmt(chosen,{day:'numeric',month:'long'}):'No events on this day.';agenda.append(label);for(const e of found){const row=document.createElement('p');row.textContent=eventLabel(e);row.style.color='#d1dccb';if(e.htmlLink){try{const u=new URL(e.htmlLink);if(u.protocol==='https:'&&(u.hostname==='calendar.google.com'||u.hostname==='www.google.com')){const a=document.createElement('a');a.href=u.href;a.target='_blank';a.rel='noopener';a.textContent=row.textContent;row.replaceChildren(a)}}catch{}}agenda.append(row)}
+}
+$('refresh').onclick=()=>{if(token)loadCalendars();if(tasksToken&&!tasksWriteBusy&&!$('taskEditor').open)loadTaskLists()};render();
+const TASK_SCOPE='https://www.googleapis.com/auth/tasks';
+let tasksToken='',tasksGeneration=0;
+const taskStatus=message=>$('tasksStatus').textContent=message;
+function resetTasks(message='Connect Google above to see your task lists.'){
+ tasksToken='';tasksGeneration++;tasksReadBusy=false;if($('taskEditor').open)$('taskEditor').close();$('taskForm').reset();$('taskLists').replaceChildren();$('taskItems').replaceChildren();$('tasksControls').hidden=true;taskStatus(message);
+}
+async function taskPages(path,params,access,isCurrent){
+ const items=[];let page='';for(let n=0;n<200;n++){
+ const query=new URLSearchParams(params);if(page)query.set('pageToken',page);
+ const res=await fetch('https://tasks.googleapis.com/tasks/v1/'+path+'?'+query,{headers:{Authorization:'Bearer '+access},cache:'no-store'});const data=await res.json();
+ if(!isCurrent())throw new Error('Request superseded');
+ if(res.status===401){resetSession('Google access expired. Connect Google again.');throw new Error('Access expired')}
+ if(!res.ok)throw new Error(data.error?.message||'Could not read Google Tasks.');
+ items.push(...(data.items||[]));page=data.nextPageToken||'';if(!page)return items;
+ }throw new Error('This list is too large to preview completely. Open Google Tasks to view it.');
+}
+async function loadTaskLists(){
+ if(!tasksToken)return;const mine=++tasksGeneration,access=tasksToken;taskStatus('Loading task lists…');$('tasksControls').hidden=true;$('taskItems').replaceChildren();
+ try{const lists=await taskPages('users/@me/lists',{maxResults:'1000'},access,()=>mine===tasksGeneration);if(mine!==tasksGeneration)return;
+ const select=$('taskLists');const previous=select.value;select.replaceChildren();for(const list of lists){const option=document.createElement('option');option.value=list.id;option.textContent=list.title||'Untitled list';select.append(option)}
+ if(!lists.length){taskStatus('No task lists in this Google account.');return}
+ if(lists.some(l=>l.id===previous))select.value=previous;$('tasksControls').hidden=false;loadTaskItems();
+ }catch(e){if(mine===tasksGeneration)taskStatus('Tasks unavailable: '+e.message+' Check that Google Tasks API is enabled, then Refresh lists.');}
+}
+$('taskLists').onchange=loadTaskItems;$('showCompleted').onchange=loadTaskItems;$('refreshTasks').onclick=loadTaskItems;$('refreshTaskLists').onclick=loadTaskLists;
+let tasksWriteBusy=false,tasksReadBusy=false,editingTask=null,editingList='',tasksLastSync=0,tasksLastDay=new Date().toDateString();
+function taskDate(value){return value?value+'T00:00:00.000Z':null}
+function taskListPath(id){return 'lists/'+encodeURIComponent(id)+'/tasks'}
+function taskButton(label,action){const b=document.createElement('button');b.type='button';b.textContent=label;b.onclick=action;return b}
+function showTaskEditor(task=null){
+ if(tasksWriteBusy||!tasksToken)return;editingTask=task;editingList=$('taskLists').value;
+ $('taskEditorTitle').textContent=task?'Edit task':'Add task';$('taskTitle').value=task?.title||'';$('taskNotes').value=task?.notes||'';$('taskDue').value=task?.due?.slice(0,10)||'';$('saveTask').disabled=false;$('taskFormStatus').textContent='';$('taskEditor').showModal();
+}
+function paintTaskRows(tasks){
+ $('taskItems').replaceChildren();for(const task of tasks){
+ const row=document.createElement('div');row.className='taskrow'+(task.status==='completed'?' completed':'');if(task.parent)row.style.marginLeft='18px';
+ const heading=document.createElement('label');heading.className='taskheading';const check=document.createElement('input');check.type='checkbox';check.checked=task.status==='completed';check.setAttribute('aria-label','Mark '+(task.title||'untitled task')+' '+(check.checked?'incomplete':'complete'));
+ check.onchange=()=>{const complete=check.checked;check.checked=!complete;mutateTask('PATCH',$('taskLists').value,task.id,{status:complete?'completed':'needsAction',...(!complete?{completed:null}:{})})};
+ const title=document.createElement('span');title.textContent=task.title||'Untitled task';heading.append(check,title);row.append(heading);
+ if(task.due){const due=document.createElement('small');due.textContent='Due '+fmt(new Date(task.due.slice(0,10)+'T12:00:00'),{day:'numeric',month:'short',year:'numeric'});row.append(due)}if(task.notes){const notes=document.createElement('p');notes.textContent=task.notes;row.append(notes)}
+ const actions=document.createElement('div');actions.className='taskactions';actions.append(taskButton('Edit',()=>showTaskEditor(task)),taskButton('Delete',()=>{if(window.confirm('Delete “'+(task.title||'Untitled task')+'” from Google Tasks?'+(tasks.some(t=>t.parent===task.id)?' Its subtasks will also be deleted.':'')))mutateTask('DELETE',$('taskLists').value,task.id)}));row.append(actions);$('taskItems').append(row);
+ }
+}
+async function loadTaskItems(){
+ if(!tasksToken||!$('taskLists').value||tasksWriteBusy)return false;
+ if($('taskEditor').open)return false;
+ const mine=++tasksGeneration,access=tasksToken;tasksReadBusy=true;taskStatus('Syncing Google Tasks…');
+ try{
+ const all=await taskPages(taskListPath($('taskLists').value),{maxResults:'100',showCompleted:String($('showCompleted').checked),showHidden:String($('showCompleted').checked),showDeleted:'false',showAssigned:'true'},access,()=>mine===tasksGeneration);
+ if(mine!==tasksGeneration)return false;const tasks=all.filter(t=>!t.deleted).sort((a,b)=>(a.position||'').localeCompare(b.position||''));paintTaskRows(tasks);tasksLastSync=Date.now();tasksLastDay=new Date().toDateString();taskStatus(tasks.length+' tasks · Synced '+fmt(new Date(),{hour:'2-digit',minute:'2-digit'})+' · Auto-sync on');return true;
+ }catch(e){if(mine===tasksGeneration)taskStatus('Sync failed. Displayed tasks may be outdated. '+e.message+' Use Refresh tasks to retry.');return false}
+ finally{if(mine===tasksGeneration)tasksReadBusy=false}
+}
+async function mutateTask(method,list,id,body){
+ if(tasksWriteBusy)return false;if(!tasksToken){taskStatus('Connect Google to save changes.');return false}
+ const access=tasksToken;tasksWriteBusy=true;tasksGeneration++;tasksReadBusy=false;
+ const controls=[...document.querySelectorAll('#tasksControls button,#tasksControls input,#tasksControls select,#taskItems button,#taskItems input,#taskEditor button,#taskEditor input,#taskEditor textarea')];controls.forEach(c=>c.disabled=true);taskStatus('Saving to Google Tasks…');$('taskFormStatus').textContent='Saving…';let result=false,unknown=false,message='';
+ try{
+ let response;try{response=await fetch('https://tasks.googleapis.com/tasks/v1/'+taskListPath(list)+(id?'/'+encodeURIComponent(id):''),{method,headers:{Authorization:'Bearer '+access,...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{}),cache:'no-store'})}catch{unknown=true;throw new Error('Connection interrupted. The change may have reached Google. Check the list before trying again.')}
+ if(response.status===401){resetTasks('Google Tasks access expired. Connect Google again.');throw new Error('Reconnect Google before saving again.')}
+ if(!response.ok){let data;try{data=await response.json()}catch{}throw new Error(data?.error?.message||'Google could not save this change.')}
+ result=true;if($('taskEditor').open)$('taskEditor').close();
+ }catch(e){message=e.message;$('taskFormStatus').textContent=message}
+ finally{
+ tasksWriteBusy=false;controls.forEach(c=>c.disabled=false);
+ if(unknown&&$('taskEditor').open)$('saveTask').disabled=true;
+ }
+ if(access!==tasksToken)return false;
+ if(result){const synced=await loadTaskItems();if(!synced)taskStatus('Saved to Google Tasks. Refresh to reload the latest list.');}
+ else{if(unknown&&!$('taskEditor').open)await loadTaskItems();taskStatus(message)}return result;
+}
+$('addTask').onclick=()=>showTaskEditor();$('cancelTask').onclick=()=>$('taskEditor').close();$('taskEditor').addEventListener('cancel',e=>{if(tasksWriteBusy)e.preventDefault()});
+$('taskForm').onsubmit=async e=>{e.preventDefault();const title=$('taskTitle').value.trim();if(!title){$('taskTitle').focus();return}await mutateTask(editingTask?'PATCH':'POST',editingList,editingTask?.id,{title,notes:$('taskNotes').value,due:taskDate($('taskDue').value)})};
+async function syncTasksIfNeeded(force=false){
+ if(document.hidden||!tasksToken||tasksWriteBusy||tasksReadBusy||$('taskEditor').open)return;
+ const newDay=tasksLastDay!==new Date().toDateString();
+ if(force||newDay||Date.now()-tasksLastSync>=60000){if(newDay||!$('taskLists').value)await loadTaskLists();else await loadTaskItems()}
+}
+setInterval(()=>syncTasksIfNeeded(),15000);
+window.addEventListener('focus',()=>syncTasksIfNeeded(true));document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncTasksIfNeeded(true)});
+
+// Keep a verse throughout each local morning, afternoon or evening.
+const encouragements = [
+ {text:'I can do all things through Christ which strengtheneth me.',reference:'Philippians 4:13'},
+ {text:'What time I am afraid, I will trust in thee.',reference:'Psalm 56:3'},
+ {text:'God is our refuge and strength, a very present help in trouble.',reference:'Psalm 46:1'},
+ {text:'The LORD is my shepherd; I shall not want.',reference:'Psalm 23:1'},
+ {text:'Casting all your care upon him; for he careth for you.',reference:'1 Peter 5:7'},
+ {text:'Trust in the LORD with all thine heart; and lean not unto thine own understanding.',reference:'Proverbs 3:5'},
+ {text:'The LORD shall fight for you, and ye shall hold your peace.',reference:'Exodus 14:14'},
+ {text:'Let all your things be done with charity.',reference:'1 Corinthians 16:14'}
+];
+let greetingPeriod='',currentVerse=-1;
+function greetingTime(date){
+ const hour=date.getHours(),period=hour>=5&&hour<12?'morning':hour>=12&&hour<18?'afternoon':'evening';
+ const anchor=new Date(date);if(hour<5)anchor.setDate(anchor.getDate()-1);
+ return {period,key:[anchor.getFullYear(),anchor.getMonth()+1,anchor.getDate(),period].join('-')};
+}
+function updateGreeting(date=new Date()){
+ const {period,key}=greetingTime(date);
+ $('fullDate').textContent=fmt(date,{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+ if(key===greetingPeriod)return;
+ let saved;try{saved=JSON.parse(localStorage.getItem('quiet-encouragement')||'null')}catch{}
+ if(saved?.key===key&&Number.isInteger(saved.index)&&saved.index>=0&&saved.index<encouragements.length){currentVerse=saved.index}
+ else{
+ const previous=currentVerse>=0?currentVerse:saved?.index;
+ const candidates=encouragements.map((_,i)=>i).filter(i=>i!==previous);
+ currentVerse=candidates[Math.floor(Math.random()*candidates.length)];
+ try{localStorage.setItem('quiet-encouragement',JSON.stringify({key,index:currentVerse}))}catch{}
+ }
+ greetingPeriod=key;
+ $('greeting').textContent='Good '+period+', Daniel.';
+ const verse=encouragements[currentVerse];
+ $('encouragement').textContent='“'+verse.text+'” — '+verse.reference+' (KJV)';
+}
+$('dismissAuthNotice').onclick=()=>{$('authToast').hidden=true};
+$('refreshCalendarChoices').onclick=loadCalendars;
+updateGreeting();setInterval(updateGreeting,30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateGreeting()});
+window.addEventListener('focus',()=>updateGreeting());
+let offlineMode=false,offlineEpoch=0,offlineRenewTimer,offlineRefresh=null;
+async function googleLocal(path,body={}){
+ const response=await fetch('/api/google/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store'});const data=await response.json();if(!response.ok){const error=new Error(data.error||'Google connection unavailable.');error.status=response.status;throw error}return data;
+}
+function applyOfflineAccess(data,initial){
+ initial=initial||(!token&&!tasksToken);
+ const granted=new Set((data.scope||'').split(' '));const calendarAllowed=granted.has(CAL_SCOPE),tasksAllowed=granted.has(TASK_SCOPE);
+ if(initial)resetSession();offlineMode=true;clearTimeout(expiryTimer);clearTimeout(offlineRenewTimer);
+ token=calendarAllowed?data.access_token:'';tasksToken=tasksAllowed?data.access_token:'';
+ $('connect').hidden=calendarAllowed&&tasksAllowed;$('connect').textContent='Update Google access';$('disconnect').hidden=false;$('refresh').hidden=false;
+ $('sessionStatus').textContent='Google connected · Automatic renewal';showAuthStatus(calendarAllowed&&tasksAllowed?'Google connected. Access renews automatically.':'Calendar or Tasks permission missing. Update Google access.');
+ offlineRenewTimer=setTimeout(()=>renewOfflineAccess(false),Math.max(10,Number(data.expires_in)-45)*1000);
+ if(initial){if(calendarAllowed)loadCalendars();if(tasksAllowed)loadTaskLists();render()}
+}
+async function renewOfflineAccess(initial=false){
+ if(offlineRefresh)return offlineRefresh;const epoch=offlineEpoch;
+ offlineRefresh=(async()=>{try{const data=await googleLocal('token');if(epoch!==offlineEpoch)return;applyOfflineAccess(data,initial)}catch(e){if(epoch!==offlineEpoch)return;if(e.status===401){offlineMode=false;resetSession('Google access expired or was revoked. Connect Google again.')}else{showAuthStatus('Could not renew Google access. Retrying shortly.');offlineRenewTimer=setTimeout(()=>renewOfflineAccess(initial),30000)}}finally{offlineRefresh=null}})();return offlineRefresh;
+}
+const browserOnlyConnect=$('connect').onclick;
+$('connect').onclick=async()=>{
+ if(googleSignInBusy||tasksWriteBusy)return;googleSignInBusy=true;$('connect').disabled=true;
+ try{const response=await fetch('/api/google/status',{cache:'no-store'});const state=await response.json();if(!state.configured){googleSignInBusy=false;$('connect').disabled=false;browserOnlyConnect();return}
+ const result=await googleLocal('start');window.location.assign(result.url);
+ }catch{showAuthStatus('Could not start Google sign-in. Check that the local dashboard server is running.');googleSignInBusy=false;$('connect').disabled=false}
+};
+const browserOnlyDisconnect=$('disconnect').onclick;
+$('disconnect').onclick=async()=>{
+ if(tasksWriteBusy)return;if(!offlineMode){browserOnlyDisconnect();return}
+ $('disconnect').disabled=true;
+ try{const result=await googleLocal('disconnect');offlineEpoch++;offlineMode=false;clearTimeout(offlineRenewTimer);resetSession('Disconnected from Google.');if(!result.revoked)showAuthStatus('Disconnected locally. Remove consent in Google Account permissions if needed.')}
+ catch(e){showAuthStatus('Could not disconnect Google: '+e.message)}finally{$('disconnect').disabled=false}
+};
+$('offlineCredentials').onchange=async()=>{
+ const input=$('offlineCredentials'),file=input.files?.[0];if(!file)return;$('offlineSetupStatus').textContent='Saving protected Google connection…';
+ try{if(file.size>65536)throw new Error('Choose the small OAuth client JSON file from Google Cloud.');const config=JSON.parse(await file.text());const result=await googleLocal('config',config);offlineEpoch++;offlineMode=false;clearTimeout(offlineRenewTimer);resetSession();clientId=result.client_id;try{localStorage.setItem('quiet-google-client-id',clientId)}catch{}$('clientId').value=clientId;$('offlineSetupStatus').textContent='Saved securely. Close Settings, then Connect Google once to enable automatic renewal.'}
+ catch(e){$('offlineSetupStatus').textContent='Could not save setup: '+e.message}finally{input.value=''}
+};
+(async()=>{try{const response=await fetch('/api/google/status',{cache:'no-store'});const state=await response.json();$('offlineSetupStatus').textContent=state.configured?'Protected OAuth credentials are configured.':'Import your Google OAuth Web client JSON to enable automatic renewal.';if(state.connected)await renewOfflineAccess(true);if(new URLSearchParams(location.search).get('google')==='denied')showAuthStatus('Google authorization did not complete. Connect Google to try again.');if(location.search.includes('google='))history.replaceState(null,'','/')}
+ catch{$('offlineSetupStatus').textContent='Automatic renewal needs the updated dashboard server.'}})();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&offlineMode)renewOfflineAccess(false)});
+</script></body></html>
